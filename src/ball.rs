@@ -2,6 +2,8 @@
 
 use {Game, Paddle, Rectangle, Result, UpdateParams};
 use glium::Frame;
+use rand::{self, Rng};
+use std::f32::consts::PI;
 
 const WIDTH: f32 = 15.0;
 const HEIGHT: f32 = 15.0;
@@ -40,8 +42,11 @@ impl Ball {
     fn reset(&mut self, x: f32, y: f32) {
         self.bounds.x = x - self.bounds.width / 2.0;
         self.bounds.y = y - self.bounds.height / 2.0;
-        
-        // TODO: Give the ball a random velocity.
+
+        let mut rng = rand::thread_rng();
+        let dv = rng.gen_range(0.0, 2.0 * PI);
+        self.vx = BALL_STARTING_SPEED * dv.cos();
+        self.vy = BALL_STARTING_SPEED * dv.sin();
     }
 
     /// Updates the position of the ball and checks for collisions.
