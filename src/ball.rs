@@ -73,7 +73,15 @@ impl Ball {
 
     /// Handles collision between the ball and a paddle.
     fn check_paddle_collision(&mut self, paddle: &Paddle) {
-        // TODO: Check collision against the given paddle, and reflect the ball if it's colliding.
+        // Left Wall of Ball
+        if (paddle.bounds.x < self.bounds.x) &&
+            (self.bounds.x < paddle.bounds.x + paddle.bounds.width) ||
+            // Right Wall of Ball
+            (paddle.bounds.x < (self.bounds.x + self.bounds.width)) &&
+            ((self.bounds.x + self.bounds.width) < (paddle.bounds.x + paddle.bounds.width))
+            {
+            self.vx = -self.vx
+        }
     }
 
     /// Handles collision between the ball and the top or bottom of the screen.
