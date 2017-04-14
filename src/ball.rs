@@ -78,13 +78,12 @@ impl Ball {
 
     /// Handles collision between the ball and the top or bottom of the screen.
     fn check_wall_collision(&mut self, params: &UpdateParams) {
-        // Clamp the paddle position on screen.
         if self.bounds.y < 0.0 {
-            let t_vx = self.vy;
-            self.vx = self.vy;
-            self.vy = self.vx * t_vx;
+            // TOP
+            self.vy = -self.vy;
         } else if self.bounds.y + self.bounds.height > params.game_height {
-            self.bounds.y = params.game_height - self.bounds.height;
+            // BOTTOM
+            self.vy = -self.vy;
         }
         // TODO: Check collision against the top and bottom of the screen, and reflect the ball if it's colliding.
     }
