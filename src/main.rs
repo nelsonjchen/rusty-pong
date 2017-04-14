@@ -109,8 +109,8 @@ impl Game {
 
             pressed_keys: HashSet::new(),
 
-            left_paddle: Paddle::new(25.0, height / 2.0),
-            right_paddle: Paddle::new(width - 25.0, height / 2.0),
+            left_paddle: Paddle::new(25.0, height / 2.0, VirtualKeyCode::W, VirtualKeyCode::S),
+            right_paddle: Paddle::new(width - 25.0, height / 2.0, VirtualKeyCode::W, VirtualKeyCode::Down),
             
             ball: Ball::new(width / 2.0, height / 2.0),
         })
