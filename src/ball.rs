@@ -85,7 +85,6 @@ impl Ball {
             // BOTTOM
             self.vy = -self.vy;
         }
-        // TODO: Check collision against the top and bottom of the screen, and reflect the ball if it's colliding.
     }
 
     /// Handles collision between the ball and the left or right edge of the screen.
