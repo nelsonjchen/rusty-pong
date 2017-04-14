@@ -41,7 +41,6 @@ impl Paddle {
     /// Updates the state of the paddle based on player input.
     pub fn update(&mut self, params: &UpdateParams, pressed_keys: &HashSet<VirtualKeyCode>) {
         /// Move the paddle if a particular key is pressed.
-        // TODO: Allow the left and right paddles to be controlled via different keys/mouse.
         let mut vy = 0.0;
         if pressed_keys.contains(&self.up_key) {
             vy -= KEYBOARD_SPEED;
